@@ -1,0 +1,5 @@
+Files: module-own-or-env/*
+Copyright: 2017 Isaac Z. Schlueter and Contributors
+Source: https://github.com/isaacs/own-or-env
+License: ISC
+

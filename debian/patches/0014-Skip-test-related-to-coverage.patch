@@ -1,0 +1,33 @@
+From bcaeb6c737ccbe101768b81b5b5e2e0e34c344cd Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bastien=20ROUCARI=C3=88S?= <roucaries.bastien@gmail.com>
+Date: Mon, 11 Sep 2017 11:08:16 +0200
+Subject: Skip test related to coverage
+
+Forwarded: no
+---
+ test-legacy/coverage-export.js          | 2 ++
+ test-legacy/coverage-html-no-browser.js | 2 ++
+ 2 files changed, 4 insertions(+)
+
+--- a/test-legacy/coverage-export.js
++++ b/test-legacy/coverage-export.js
+@@ -7,6 +7,8 @@
+ var ok = require.resolve('./test/ok.js')
+ var testRe = /COVERAGE_SERVICE_TEST/
+ 
++process.exit()
++
+ t.test('generate some coverage data', function (tt) {
+   spawn(node, [run, ok, '--coverage'], {
+     stdio: 'ignore'
+--- a/test-legacy/coverage-html-no-browser.js
++++ b/test-legacy/coverage-html-no-browser.js
+@@ -13,6 +13,8 @@
+ var dir = __dirname + '/coverage-html-no-browser'
+ var htmlfile = dir + '/coverage/lcov-report/bin/run.js.html'
+ 
++process.exit()
++
+ t.test('setup a working dir', function (t) {
+   mkdirp.sync(dir)
+   t.end()

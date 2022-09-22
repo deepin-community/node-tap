@@ -1,0 +1,33 @@
+From d6f28e9134e685a20cc78b7d6e832bdd7e0a5c2c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bastien=20ROUCARI=C3=88S?= <roucaries.bastien@gmail.com>
+Date: Sun, 10 Sep 2017 22:52:22 +0200
+Subject: Replace color-support by supports-color
+
+Forwarded: no
+---
+ bin/run.js   | 2 +-
+ package.json | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+--- a/bin/run.js
++++ b/bin/run.js
+@@ -5,7 +5,7 @@
+ const fs = require('fs')
+ const spawn = require('child_process').spawn
+ const fg = require('foreground-child')
+-const colorSupport = require('color-support')
++const colorSupport = require('supports-color')
+ const nycBin = require.resolve('nyc/bin/nyc.js')
+ const glob = require('glob')
+ const isexe = require('isexe')
+--- a/package.json
++++ b/package.json
+@@ -15,7 +15,7 @@
+     "bind-obj-methods": "^2.0.0",
+     "bluebird": "^3.5.1",
+     "clean-yaml-object": "^0.1.0",
+-    "color-support": "^1.1.0",
++    "supports-color" : "^3",
+     "coveralls": "^3.0.1",
+     "foreground-child": "^1.3.3",
+     "fs-exists-cached": "^1.0.0",

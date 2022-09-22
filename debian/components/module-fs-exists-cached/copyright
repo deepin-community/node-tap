@@ -1,0 +1,5 @@
+Files: module-fs-exists-cached/*
+Copyright: 2017 Isaac Z. Schlueter and Contributors
+Source:  https://github.com/isaacs/fs-exists-cached
+License: ISC
+

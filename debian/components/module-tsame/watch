@@ -1,0 +1,5 @@
+version=3
+opts=\
+dversionmangle=s/\+(debian|dfsg|ds|deb)(\.\d+)?$//,\
+filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-tsame-$1.tar.gz/ \
+ https://github.com/tapjs/tsame/tags .*/archive/v?([\d\.]+).tar.gz

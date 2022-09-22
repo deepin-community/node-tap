@@ -1,0 +1,92 @@
+From c125581c12e7f35fce6eac5153f412c2377037c8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bastien=20ROUCARI=C3=88S?= <roucaries.bastien@gmail.com>
+Date: Fri, 1 Dec 2017 16:52:33 +0100
+Subject: Disable test for disabled feature
+
+Forwarded: no
+---
+ test/run.js  | 13 ++++++++-----
+ test/test.js |  3 ++-
+ 2 files changed, 10 insertions(+), 6 deletions(-)
+
+--- a/test/run.js
++++ b/test/run.js
+@@ -77,13 +77,14 @@
+       t.end()
+     })
+   })
++  /*
+   t.test('--nyc-help', t => {
+     run(['--nyc-help'], null, (er, o, e) => {
+       t.equal(er, null)
+       t.match(o, /\nOptions:\n/)
+       t.end()
+     })
+-  })
++  })*/
+   t.test('--version', t => {
+     run(['--version'], null, (er, o, e) => {
+       t.equal(er, null)
+@@ -91,13 +92,14 @@
+       t.end()
+     })
+   })
++  /*
+   t.test('--nyc-version', t => {
+     run(['--nyc-version'], null, (er, o, e) => {
+       t.equal(er, null)
+       t.equal(o.trim(), require('nyc/package.json').version)
+       t.end()
+     })
+-  })
++  })*/
+   t.end()
+ })
+ 
+@@ -348,7 +350,7 @@
+     t.end()
+   })
+ })
+-
++/*
+ t.test('coverage', t => {
+   const cwd = process.cwd()
+   process.chdir(dir)
+@@ -439,7 +441,8 @@
+ 
+   t.end()
+ })
+-
++*/
++/*
+ t.test('save file', t => {
+   const xy1 = tmpfile(t, 'x/y/1.js', `'use strict'
+     const t = require(${tap})
+@@ -513,7 +516,7 @@
+ 
+   t.end()
+ })
+-
++*/
+ t.test('parallel', t => {
+   // should see start, start, end, end, in the output
+   tmpfile(t, 'p/y/1.js', `'use strict'
+--- a/test/test.js
++++ b/test/test.js
+@@ -179,6 +179,7 @@
+     'child thrower': tt => tt.test('child test', tt =>
+       tt.threw(new Error('ok'))).then(tt.end),
+ 
++    /*
+     'child end event thrower': tt => {
+       tt.test(tt => {
+         tt.plan(1)
+@@ -191,7 +192,7 @@
+         tt.equal(3, 3)
+       })
+       tt.end()
+-    }
++    }*/
+   }
+ 
+   const keys = Object.keys(cases)

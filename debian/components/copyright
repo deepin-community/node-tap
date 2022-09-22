@@ -1,0 +1,63 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: tap
+Upstream-Contact: https://github.com/isaacs/node-tap/issues
+Source: https://github.com/isaacs/node-tap
+
+Files: *
+Copyright: 2012-2017, Isaac Z. Schlueter and Contributors
+ 2012-2017, Alexander Makarenko <estliberitas@gmail.com>
+ 2012-2017, Alex Indigo <iam@alexindigo.com>
+ 2012-2017, Amine Mouafik <amine@mouafik.fr>
+ 2012-2017, Andrew de Andrade <andrew@deandrade.com.br>
+ 2012-2017, Balázs Schwarzkopf <schwarzkopfb@icloud.com>
+ 2012-2017, Matt Sergeant aka baudehlo <helpme+github@gmail.com>
+ 2012-2017, Benjamin Coe <ben@npmjs.com>
+ 2012-2017, Ben McCurdy <bpmccurdy@gmail.com>
+ 2012-2017, Ben Noordhuis <info@bnoordhuis.nl>
+ 2012-2017, Corey Richardson <kb1pkl@aim.com>
+ 2012-2017, Damian Beresford <Damian.Beresford@feedhenry.com>
+ 2012-2017, Jon Ronnenber <jon.ronnenberg@gmail.com>
+ 2012-2017, Douglas Campos <qmx@qmx.me>
+ 2012-2017, Duncan Angus Wilkie (mrdnk) <duncanwilkie@hotmail.com>
+ 2012-2017, Elliott Cable <github@elliottcable.name>
+ 2012-2017, Evan Lucas <evanlucas@me.com>
+ 2012-2017, Forrest L Norvell <forrest@npmjs.com>
+ 2012-2017, F. Scherwi <fscherwi@users.noreply.github.com>
+ 2012-2017, George Adams <george.adams@uk.ibm.com>
+ 2012-2017, Gregor Martynux <gregor@martynus.net>
+ 2012-2017, Ian Langworth ☠ <ian@langworth.com>
+ 2012-2017, James Halliday <mail@substack.net>
+ 2012-2017, James Talmage <james@talmage.io>
+ 2012-2017, Jan Krems <jan.krems@groupon.com>
+ 2012-2017, Jason Smith (air) <jhs@iriscouch.com>
+ 2012-2017, Johannes Wuerbach <johannes.wuerbach@googlemail.com>
+ 2012-2017, John Resig <jeresig@gmail.com>
+ 2012-2017, Jo Liss <joliss42@gmail.com>
+ 2012-2017, Jon Ege Ronnenberg <jon.ronnenberg@gmail.com>
+ 2012-2017, Kayla Graves <kylgrvs@gmail.com>
+ 2012-2017, Marc Harter <wavded@gmail.com>
+ 2012-2017, Mark Wubben <mark@novemberborn.net>
+ 2012-2017, Max Tobias Weber <maxtobiasweber@gmail.com>
+ 2012-2017, Miroslav Bajtoš <miroslav@strongloop.com>
+ 2012-2017, Myk Melez <myk@mykzilla.org>
+ 2012-2017, Odyssea Tsatalos <ogt@tsatalos.com>
+ 2012-2017, Pedro P. Candel <kusorbox@gmail.com>
+ 2012-2017, Ranieri Althoff <ranisalt@gmail.com>
+ 2012-2017, Jake Verbaten (Raynos) <raynos2@gmail.com>
+ 2012-2017, Roger Meier <roger@bufferoverflow.ch>
+ 2012-2017, Ryan Graham <r.m.graham@gmail.com>
+ 2012-2017, Ryan Graham <ryan@strongloop.com>
+ 2012-2017, Siddharth Mahendraker <siddharth_mahen@me.com>
+ 2012-2017, Simeon Vincent <svincent@gmail.com>
+ 2012-2017, Stein Martin Hustad <stein@hustad.com>
+ 2012-2017, Maarten Spaans <maarten@nouncy.com>
+ 2012-2017, Thorsten Lorenz <thlorenz@gmx.de>
+ 2012-2017, Tim Taubert <tim@timtaubert.de>
+ 2012-2017, Tom MacWright <tom@macwright.org>
+ 2012-2017, Trent Mick <trentm@gmail.com>
+License: ISC
+
+Files: debian/*
+Copyright: 2014 Jérémy Lal <kapouer@melix.org>
+License: ISC
+

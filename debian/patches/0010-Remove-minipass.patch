@@ -1,0 +1,54 @@
+From 61f743e83e9e9ef9e78ea0f84f38856819dc50d3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bastien=20ROUCARI=C3=88S?= <roucaries.bastien@gmail.com>
+Date: Fri, 1 Dec 2017 16:32:04 +0100
+Subject: Remove minipass
+
+Forwarded: no
+---
+ lib/base.js   | 2 +-
+ package.json  | 1 -
+ test/stdin.js | 2 +-
+ test/test.js  | 2 +-
+ 4 files changed, 3 insertions(+), 4 deletions(-)
+
+--- a/lib/base.js
++++ b/lib/base.js
+@@ -1,6 +1,6 @@
+ 'use strict'
+ 
+-const MiniPass = require('minipass')
++const MiniPass = require('stream').PassThrough
+ 
+ const extraFromError = require('./extra-from-error.js')
+ const assert = require('assert')
+--- a/package.json
++++ b/package.json
+@@ -23,7 +23,6 @@
+     "glob": "^7.0.0",
+     "isexe": "^2.0.0",
+     "js-yaml": "^3.11.0",
+-    "minipass": "^2.3.0",
+     "mkdirp": "^0.5.1",
+     "own-or": "^1.0.0",
+     "own-or-env": "^1.0.1",
+--- a/test/stdin.js
++++ b/test/stdin.js
+@@ -1,6 +1,6 @@
+ const t = require('../')
+ const Stdin = require('../lib/stdin.js')
+-const MP = require('minipass')
++const MP = require('stream').PassThrough
+ 
+ process.env.TAP_BAIL = ''
+ process.env.TAP_BUFFER = ''
+--- a/test/test.js
++++ b/test/test.js
+@@ -6,7 +6,7 @@
+ const util = require('util')
+ const assert = require('assert')
+ const EE = require('events').EventEmitter
+-const MiniPass = require('minipass')
++const MiniPass = require('stream').PassThrough
+ 
+ // set this forcibly so it doesn't interfere with other tests.
+ process.env.TAP_DIAG = ''

@@ -1,0 +1,82 @@
+From bb5833c05b5b3e01b028e4c4b524f3925267a9cb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bastien=20ROUCARI=C3=88S?= <roucaries.bastien@gmail.com>
+Date: Sun, 10 Sep 2017 22:56:51 +0200
+Subject: Render nyc optional
+
+Forwarded: no
+---
+ bin/run.js   | 16 +++++++++++-----
+ package.json |  2 +-
+ 2 files changed, 12 insertions(+), 6 deletions(-)
+
+--- a/bin/run.js
++++ b/bin/run.js
+@@ -6,7 +6,13 @@
+ const spawn = require('child_process').spawn
+ const fg = require('foreground-child')
+ const colorSupport = require('supports-color')
+-const nycBin = require.resolve('nyc/bin/nyc.js')
++var nycBin;
++function getNycBin() {
++ if (!nycBin) {
++   nycBin = require.resolve('nyc/bin/nyc.js');
++ }
++return nycBin;
++}
+ const glob = require('glob')
+ const isexe = require('isexe')
+ const osHomedir = require('os-homedir')
+@@ -426,7 +432,7 @@
+ /* istanbul ignore next */
+ const respawnWithCoverage = options => {
+   // Re-spawn with coverage
+-  const args = [nycBin].concat(
++  const args = [getnycBin()].concat(
+     '--silent',
+     '--cache=true',
+     options.nycArgs,
+@@ -504,7 +510,7 @@
+       options.coverageReport = 'text'
+   }
+ 
+-  const args = [nycBin, 'report', '--reporter', options.coverageReport]
++  const args = [getnycBin(), 'report', '--reporter', options.coverageReport]
+ 
+   let child
+   // automatically hook into coveralls
+@@ -543,7 +549,7 @@
+ 
+ /* istanbul ignore next */
+ const runCoverageCheck = (options, code, signal) => {
+-  const args = [nycBin, 'check-coverage'].concat(coverageCheckArgs(options))
++  const args = [getnycBin(), 'check-coverage'].concat(coverageCheckArgs(options))
+ 
+   const child = fg(node, args)
+   child.removeAllListeners('close')
+@@ -555,7 +561,7 @@
+     .split('@@REPORTERS@@')
+     .join(getReporters())
+ 
+-const nycHelp = _ => fg(node, [nycBin, '--help'])
++const nycHelp = _ => fg(node, [getnycBin(), '--help'])
+ 
+ const nycVersion = _ => console.log(require('nyc/package.json').version)
+ 
+--- a/package.json
++++ b/package.json
+@@ -25,7 +25,6 @@
+     "js-yaml": "^3.11.0",
+     "minipass": "^2.3.0",
+     "mkdirp": "^0.5.1",
+-    "nyc": "^11.8.0",
+     "os-homedir": "^1.0.2",
+     "own-or": "^1.0.0",
+     "own-or-env": "^1.0.1",
+@@ -42,6 +41,7 @@
+     "yapool": "^1.0.0"
+   },
+   "optionalDependencies" : {
++    "nyc": "^11.8.0",
+     "opener": "^1.4.1"
+   },
+   "keywords": [

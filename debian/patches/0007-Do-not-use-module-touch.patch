@@ -1,0 +1,20 @@
+From 82243351ebfa6330580b4d19d8f42909f71d71eb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bastien=20ROUCARI=C3=88S?= <roucaries.bastien@gmail.com>
+Date: Tue, 12 Sep 2017 14:52:07 +0200
+Subject: Do not use module touch
+
+Forwarded: no
+---
+ module-fs-exists-cached/test.js | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/module-fs-exists-cached/test.js
++++ b/module-fs-exists-cached/test.js
+@@ -1,6 +1,6 @@
+ var exists = require('./')
+ var t = require('tap')
+-var touch = require('touch')
++var touch = { 'sync' : function (f) { var fs = require('fs') ;fs.closeSync(fs.openSync(f,'w')) ; } }
+ var rimraf = require('rimraf')
+ 
+ t.test('setup', function (t) {

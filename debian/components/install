@@ -1,0 +1,4 @@
+package.json                                          usr/lib/nodejs/tap/
+bin/run.js                                            usr/lib/nodejs/tap/bin/
+bin/*.txt                                             usr/lib/nodejs/tap/bin/
+lib                                                   usr/lib/nodejs/tap/

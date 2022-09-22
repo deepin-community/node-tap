@@ -1,0 +1,182 @@
+node-tap (12.0.1+ds-3) unstable; urgency=medium
+
+  * Team upload
+  * Declare compliance with policy 4.5.0
+  * Fix test for js-yaml 3.14.0 (Closes: #964880)
+
+ -- Xavier Guimard <yadd@debian.org>  Tue, 11 Aug 2020 11:43:47 +0200
+
+node-tap (12.0.1+ds-2) unstable; urgency=medium
+
+  * Team upload
+  * Bump debhelper compatibility level to 12
+  * Declare compliance with policy 4.4.1
+  * Add "Rules-Requires-Root: no"
+  * Add debian/gbp.conf
+  * Add upstream/metadata
+  * Use pkg-js-tools auto install
+  * Add lintian overrides
+  * Update links
+  * Use ${nodejs:Provides}
+  * Disable 3 tests that fail with Node.js ≥ 12
+
+ -- Xavier Guimard <yadd@debian.org>  Mon, 20 Jan 2020 13:05:57 +0100
+
+node-tap (12.0.1+ds-1) unstable; urgency=medium
+
+  * New upstream version.
+  * Update embedded node-tsame.
+  * Bump policy (no changes)
+
+ -- Bastien Roucariès <rouca@debian.org>  Thu, 06 Sep 2018 15:45:42 +0200
+
+node-tap (11.1.4+ds-3) unstable; urgency=medium
+
+  * node-tap provides virtual package for embedded small package.
+
+ -- Bastien Roucariès <rouca@debian.org>  Mon, 25 Jun 2018 21:15:49 +0200
+
+node-tap (11.1.4+ds-2) unstable; urgency=medium
+
+  * use CI=1 env variable in order to increase timeout.
+    Fix FTBFS
+
+ -- Bastien Roucariès <rouca@debian.org>  Tue, 08 May 2018 15:16:17 +0200
+
+node-tap (11.1.4+ds-1) unstable; urgency=medium
+
+  * Update own-or-env
+  * Increase timeout for build, thanks to Graham Inggs
+    (Closes: #895312).
+  * Bump compat or policy (no changes).
+  * Move to salsa
+  * Change homepage
+
+ -- Bastien Roucariès <rouca@debian.org>  Mon, 07 May 2018 15:10:30 +0200
+
+node-tap (11.0.0+ds1-2) unstable; urgency=medium
+
+  * Bug fix: "4 autopkgtests fail", thanks to Pirate Praveen (Closes:
+    #877967).
+
+ -- Bastien Roucariès <rouca@debian.org>  Sun, 03 Dec 2017 16:05:26 +0100
+
+node-tap (11.0.0+ds1-1) unstable; urgency=medium
+
+  * New upstream version
+
+ -- Bastien Roucariès <rouca@debian.org>  Fri, 01 Dec 2017 16:01:12 +0100
+
+node-tap (10.7.2+ds1-4) unstable; urgency=medium
+
+  * Bug fix: "node-tap FTBFS: test failures", thanks to Adrian Bunk
+    (Closes: #876938). Avoid timeout test
+  * coverall is recommended
+
+ -- Bastien Roucariès <rouca@debian.org>  Wed, 27 Sep 2017 13:53:16 +0200
+
+node-tap (10.7.2+ds1-3) unstable; urgency=medium
+
+  * Fix autopkgtest by not using timeout
+
+ -- Bastien Roucariès <rouca@debian.org>  Mon, 18 Sep 2017 11:15:40 +0200
+
+node-tap (10.7.2+ds1-2) unstable; urgency=medium
+
+  * Fix autopkgtest
+
+ -- Bastien Roucariès <rouca@debian.org>  Fri, 15 Sep 2017 10:56:06 +0200
+
+node-tap (10.7.2+ds1-1) unstable; urgency=medium
+
+  * New upstream version (Closes: #872899).
+  * Bump policy no changes
+  * Add myself as maintainer
+
+ -- Bastien Roucariès <rouca@debian.org>  Thu, 14 Sep 2017 13:42:33 +0200
+
+node-tap (8.0.0-6) unstable; urgency=medium
+
+  * Team upload
+  * Use module node-clean-yaml-object instad of patch
+  * Use node-tap-mocha-reporter instead of patch
+  * Use node-stack-utils instead of patch
+
+ -- Bastien Roucariès <rouca@debian.org>  Thu, 07 Sep 2017 11:11:55 +0200
+
+node-tap (8.0.0-5) unstable; urgency=medium
+
+  * Team upload.
+  * Use module foreground-child instead of patch.
+  * Run tap using a wrapper in order to get usage.
+
+ -- Bastien Roucariès <rouca@debian.org>  Fri, 01 Sep 2017 14:31:56 +0200
+
+node-tap (8.0.0-4) unstable; urgency=medium
+
+  * Build reproducibility: do not use dh_fixperms -X
+
+ -- Jérémy Lal <kapouer@melix.org>  Wed, 01 Feb 2017 10:11:25 +0100
+
+node-tap (8.0.0-3) unstable; urgency=medium
+
+  * Disable segv test if gcc is missing (Closes: #848904)
+
+ -- Jérémy Lal <kapouer@melix.org>  Tue, 20 Dec 2016 18:20:01 +0100
+
+node-tap (8.0.0-2) unstable; urgency=medium
+
+  * Fail missing nyc gracefully (Closes: #844998)
+  * Add Build-Depends so help2man can launch tap
+  * Remove dependencies from the old tap version
+
+ -- Jérémy Lal <kapouer@melix.org>  Sat, 19 Nov 2016 14:55:49 +0100
+
+node-tap (8.0.0-1) unstable; urgency=medium
+
+  * New upstream version 8.0.0
+  * Secure Vcs url
+  * Standards-Version 3.9.8
+  * Copyright: Expat to ISC
+  * Copyright for foreground-child
+  * Bundle modules from tapjs as patches:
+    + foreground-child
+    + tap-mocha-reporter
+    + clean-yaml-object
+    + stack-utils
+    + buffer-to-string
+  * Remove the need for unavailable dependencies:
+    + only-shallow
+    + deeper
+    + color-support
+    + os-homedir
+    + bluebird
+  * Postpone the need for unavailable dependencies, and Suggests them:
+    + coveralls
+    + nyc
+    + opener
+  * Build-Depends: keep only what's needed to get help2man running
+  * Fix help2man call (Closes: #841558)
+  * Enable test suite in autopkgtest
+  * Patch tests for nodejs rename and disable some tests
+
+ -- Jérémy Lal <kapouer@melix.org>  Sun, 13 Nov 2016 19:13:51 +0100
+
+node-tap (0.7.1-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream release.
+
+ -- Ximin Luo <infinity0@debian.org>  Mon, 31 Aug 2015 04:30:06 +0200
+
+node-tap (0.4.13-2) unstable; urgency=medium
+
+  * Patch fixing failing test FTBFS (Closes: #775627)
+
+ -- Jérémy Lal <kapouer@melix.org>  Mon, 16 Feb 2015 23:52:37 +0100
+
+node-tap (0.4.13-1) unstable; urgency=low
+
+  * Initial release (Closes: #765988)
+
+ -- Jérémy Lal <kapouer@melix.org>  Mon, 20 Oct 2014 02:01:43 +0200

@@ -1,0 +1,27 @@
+Tests: require
+Depends: node-tap, nodejs (>= 6)
+
+Tests: runtestsuite-module-bind-obj-methods
+Depends: node-tap, nodejs (>= 6)
+
+Tests: runtestsuite-module-fs-exists-cached
+Depends: node-tap, node-rimraf (>= 2.5.4), nodejs (>= 6)
+
+Tests: runtestsuite-module-function-loop
+Depends: node-tap, nodejs (>= 6)
+
+Tests: runtestsuite-module-own-or
+Depends: node-tap, nodejs (>= 6), node-assert (>= 1.0)
+
+Tests: runtestsuite-module-own-or-env
+Depends: node-tap, nodejs (>= 6), node-assert (>= 1.0)
+
+Tests: runtestsuite-module-yapool
+Depends: node-tap, nodejs (>= 6), node-assert (>= 1.0)
+
+Tests: runtestsuite-module-tsame
+Depends: node-tap, nodejs (>= 6)
+
+Tests: runtestsuite-tap
+Depends: node-tap, nodejs (>= 6),  node-mkdirp (>= 0.5.1),
+    node-rimraf (>= 2.5.4), node-which (>= 1.1.1)

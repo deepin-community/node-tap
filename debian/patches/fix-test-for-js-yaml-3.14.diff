@@ -1,0 +1,44 @@
+Description: fix test for js-yaml 3.14.0
+Author: Xavier Guimard <yadd@debian.org>
+Bug-Debian: https://bugs.debian.org/964880
+Forwarded: not-needed
+Last-Update: 2020-08-11
+
+--- a/tap-snapshots/test-test.js-TAP.test.js
++++ b/tap-snapshots/test-test.js-TAP.test.js
+@@ -1281,7 +1281,7 @@
+     line: #
+     column: #
+     file: test/test.js
+-  compare: ===
++  compare: '==='
+   found: 1
+   source: |
+     tt.equal(1, 2)
+@@ -1298,7 +1298,7 @@
+     line: #
+     column: #
+     file: test/test.js
+-  compare: ===
++  compare: '==='
+   found:
+     foo: 1
+   note: Objects never === one another
+@@ -1508,7 +1508,7 @@
+     line: #
+     column: #
+     file: test/test.js
+-  compare: ===
++  compare: '==='
+   found: 'null'
+   source: |
+     tt.type(null, 'object', 'this fails')
+@@ -1543,7 +1543,7 @@
+     line: #
+     column: #
+     file: test/test.js
+-  compare: ===
++  compare: '==='
+   found: function
+   source: |
+     tt.type(() => {}, Object, 'fail: arrows are not objects')

@@ -1,0 +1,2 @@
+# False positive
+source: pkg-js-tools-test-is-missing debian/tests/pkg-js/test

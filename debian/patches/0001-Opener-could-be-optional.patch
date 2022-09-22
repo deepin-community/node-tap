@@ -1,0 +1,55 @@
+From 18673849a26bbed91d8ad9331cb3c38c79bebe2a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bastien=20ROUCARI=C3=88S?= <roucaries.bastien@gmail.com>
+Date: Sun, 10 Sep 2017 22:49:23 +0200
+Subject: Opener could be optional
+
+Render opener optional
+
+Forwarded: no
+---
+ bin/run.js   | 6 +++---
+ package.json | 4 +++-
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+
+--- a/bin/run.js
++++ b/bin/run.js
+@@ -5,7 +5,6 @@
+ const fs = require('fs')
+ const spawn = require('child_process').spawn
+ const fg = require('foreground-child')
+-const opener = require('opener')
+ const colorSupport = require('color-support')
+ const nycBin = require.resolve('nyc/bin/nyc.js')
+ const glob = require('glob')
+@@ -516,8 +515,9 @@
+     // otherwise just run the reporter
+     child = fg(node, args)
+     if (options.coverageReport === 'lcov' && options.browser)
+-      child.on('exit', () =>
+-        opener('coverage/lcov-report/index.html'))
++      child.on('exit', function () {
++        require('opener')('coverage/lcov-report/index.html')
++      })
+   }
+ 
+   if (code || signal) {
+--- a/package.json
++++ b/package.json
+@@ -26,7 +26,6 @@
+     "minipass": "^2.3.0",
+     "mkdirp": "^0.5.1",
+     "nyc": "^11.8.0",
+-    "opener": "^1.4.1",
+     "os-homedir": "^1.0.2",
+     "own-or": "^1.0.0",
+     "own-or-env": "^1.0.1",
+@@ -42,6 +41,9 @@
+     "write-file-atomic": "^2.3.0",
+     "yapool": "^1.0.0"
+   },
++  "optionalDependencies" : {
++    "opener": "^1.4.1"
++  },
+   "keywords": [
+     "assert",
+     "tap",

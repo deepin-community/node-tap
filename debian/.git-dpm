@@ -1,0 +1,16 @@
+# see git-dpm(1) from git-dpm package
+15d38b8301b38e778db51f373f77055570aa737e
+15d38b8301b38e778db51f373f77055570aa737e
+dc2462be8eb9b2c0d80388ed16b26f786f645b2a
+dc2462be8eb9b2c0d80388ed16b26f786f645b2a
+node-tap_12.0.1+ds.orig.tar.gz
+298ec17db022879c88351aca8db56cd57b538492
+240480
+component:522a8693bbe5af81223646d1122b3c8c10d6c430:14390:node-tap_12.0.1+ds.orig-module-bind-obj-methods.tar.gz
+component:696c8dcd7c39b57a271e7652f8155c4aca24f653:1813:node-tap_12.0.1+ds.orig-module-function-loop.tar.gz
+component:cf25554ca050dc49ae6656b41de42258989dcbce:1047:node-tap_12.0.1+ds.orig-module-fs-exists-cached.tar.gz
+component:4b374a059bc238660e0ad62416a5bd78fa90d16a:15417:node-tap_12.0.1+ds.orig-module-own-or-env.tar.gz
+component:4e877fbeda9a2ec8000fbc0bcae39645ee8bf8dc:1333:node-tap_12.0.1+ds.orig-module-own-or.tar.gz
+component:078874f788e3463819aababb8397ce021adbfa1a:1566:node-tap_12.0.1+ds.orig-module-trivial-deferred.tar.gz
+component:f693f29a315b50d9a9da2646a7a6645c96985b6a:1882:node-tap_12.0.1+ds.orig-module-yapool.tar.gz
+component:5e2e4021c3bf84bb51851484614e709f52f156dc:22178:node-tap_12.0.1+ds.orig-module-tsame.tar.gz

@@ -1,0 +1,73 @@
+Source: node-tap
+Maintainer: Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>
+Uploaders: Jérémy Lal <kapouer@melix.org>,
+           Bastien Roucariès <rouca@debian.org>
+Section: javascript
+Priority: optional
+Build-Depends:
+ debhelper-compat (= 12)
+ , nodejs (>= 6)
+ , help2man <!nodoc>
+ , node-clean-yaml-object <!nocheck> <!nodoc>
+ , node-supports-color  <!nocheck> <!nodoc>
+ , node-foreground-child <!nocheck> <!nodoc>
+ , node-glob (>= 7) <!nocheck> <!nodoc>
+ , node-isexe (>= 2.0) <!nocheck> <!nodoc>
+ , node-js-yaml (>= 3.14.0) <!nocheck> <!nodoc>
+ , node-mkdirp (>= 0.5.1) <!nocheck> <!nodoc>
+ , node-rimraf (>= 2.6.2) <!nocheck> <!nodoc>
+ , node-signal-exit <!nocheck> <!nodoc>
+ , node-source-map-support (>= 0.5.6) <!nocheck> <!nodoc>
+ , node-stack-utils <!nocheck> <!nodoc>
+ , node-tap-mocha-reporter <!nocheck> <!nodoc>
+ , node-tap-parser (>= 7.0.0) <!nocheck> <!nodoc>
+ , node-tmatch (>= 4.0.0) <!nocheck> <!nodoc>
+ , node-write-file-atomic <!nocheck> <!nodoc>
+ , node-mkdirp <!nocheck> <!nodoc>
+ , node-which (>= 1.1.1) <!nocheck> <!nodoc>
+ , node-assert <!nocheck> <!nodoc>
+ , node-coveralls <!nocheck> <!nodoc>
+ , node-opener <!nocheck> <!nodoc>
+ , pkg-js-tools (>= 0.9.20~)
+Standards-Version: 4.5.0
+Vcs-Browser: https://salsa.debian.org/js-team/node-tap
+Vcs-Git: https://salsa.debian.org/js-team/node-tap.git
+Homepage: https://github.com/tapjs/node-tap
+Rules-Requires-Root: no
+
+Package: node-tap
+Architecture: all
+Depends:
+ ${misc:Depends}
+ , nodejs (>= 6)
+ , node-clean-yaml-object
+ , node-supports-color
+ , node-foreground-child
+ , node-glob (>= 7)
+ , node-isexe (>= 2.0)
+ , node-js-yaml (>= 3.11.0)
+ , node-mkdirp (>= 0.5.1)
+ , node-rimraf (>= 2.6.2)
+ , node-signal-exit
+ , node-source-map-support (>= 0.5.6)
+ , node-stack-utils
+ , node-tap-mocha-reporter
+ , node-tap-parser (>= 7.0.0)
+ , node-tmatch (>= 4.0.0)
+ , node-write-file-atomic
+Recommends:
+ node-coveralls
+ , node-opener
+Suggests: node-nyc (>= 11.8.0)
+Provides: ${nodejs:Provides}
+Description: Test-Anything-Protocol module for Node.js
+ Utilities for writing test harnesses complying with TAP output format.
+ .
+ TAP is a simple text-based interface between testing modules
+ implemented in many popular languages.
+ .
+ This package includes leaf package node-bind-obj-methods,
+ node-fs-exists-cached, node-function-loop, node-own-or, node-own-or-env,
+ node-trivial-deferred, node-tsame, node-yapool
+ .
+ Node.js is an event-based server-side JavaScript engine.

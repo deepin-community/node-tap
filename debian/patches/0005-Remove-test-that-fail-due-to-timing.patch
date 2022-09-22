@@ -1,0 +1,22 @@
+From 39d48d40eee82e71246f5bda059ab1b877300f97 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bastien=20ROUCARI=C3=88S?= <roucaries.bastien@gmail.com>
+Date: Tue, 12 Sep 2017 11:50:38 +0200
+Subject: Remove test that fail due to timing
+
+Forwarded: no
+---
+ test-legacy/runner-epipe.js | 3 +++
+ 1 file changed, 3 insertions(+)
+
+--- a/test-legacy/runner-epipe.js
++++ b/test-legacy/runner-epipe.js
+@@ -10,6 +10,9 @@
+   process.exit()
+ }
+ 
++/* not suitable for buildd */
++process.exit()
++
+ var cp = require('child_process')
+ var spawn = cp.spawn
+ var execFile = cp.execFile

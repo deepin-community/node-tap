@@ -1,0 +1,89 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+export DH_VERBOSE=1
+
+define newline =
+
+
+endef
+define space =
+endef
+
+COMPONENTS=$(subst $(newline),$(space),$(shell set -e;cd debian/components && (find . -type d -printf "%f\n" | sed '/^[.]$$/d' )))
+COMPONENTS_FILES=$(foreach component,$(COMPONENTS),debian/components/$(component)/$(1))
+COPYRIGHT_COMPONENTS_FILES=$(call COMPONENTS_FILES,copyright)
+INSTALL_COMPONENTS_FILES=$(call COMPONENTS_FILES,install)
+MODULES_COMPONENTS=$(foreach component,$(COMPONENTS),$(shell echo $(component) | sed 's/^module[-]//g'))
+
+TIMEOUT=30000
+TAP:= $(CURDIR)/bin/run.js -R spec -t $(TIMEOUT)
+
+%:
+	dh $@ --with nodejs
+
+override_dh_fixperms:
+	dh_fixperms
+	chmod a+x debian/node-tap/usr/share/nodejs/tap/bin/run.js
+
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS) $(DEB_BUILD_PROFILES)))
+override_dh_auto_test:
+	cd module-bind-obj-methods && $(TAP) test.js
+	cd module-fs-exists-cached && $(TAP) test.js
+	cd module-function-loop && $(TAP) test.js
+	cd module-own-or && $(TAP) test.js
+	cd module-own-or-env && $(TAP) test.js
+	cd module-trivial-deferred && $(TAP) test.js
+	cd module-yapool && $(TAP) test.js
+	cd module-tsame && $(TAP) test
+	CI=1 TRAVIS=1 $(TAP) test/*.js
+else
+override_dh_auto_test:
+	@echo '**********************************************************'
+	@echo 'Skip test                  '
+	@echo '**********************************************************'
+endif
+
+ifeq (,$(filter nodoc,$(DEB_BUILD_OPTIONS) $(DEB_BUILD_PROFILES)))
+override_dh_installman:
+	help2man -N -n "Test-Anything-Protocol module for Node.js" --no-discard-stderr bin/run.js -o debian/tap.1
+	dh_installman
+else
+override_dh_installman:
+	@echo '**********************************************************'
+	@echo 'Skip generating man page                                  '
+	@echo '**********************************************************'
+endif
+
+override_dh_installdocs:
+	dh_installdocs
+	set -e ; for c in $(MODULES_COMPONENTS); do \
+	    mkdir -p "debian/node-tap/usr/share/doc/node-$$c"; \
+	    ln -s ../node-tap/copyright debian/node-tap/usr/share/doc/node-$$c/copyright; \
+	    ln -s ../node-tap/changelog.Debian.gz debian/node-tap/usr/share/doc/node-$$c/changelog.Debian.gz; \
+	    cp -f module-$$c/README.md debian/node-tap/usr/share/doc/node-$$c/; \
+	done
+
+ifeq (,$(filter nodoc,$(DEB_BUILD_OPTIONS) $(DEB_BUILD_PROFILES)))
+override_dh_installexamples:
+	dh_installexamples
+	find debian/node-tap/usr/share/doc/node-tap/examples -name '*.js' -exec \
+		sed -i "s,require[(]['][.][.][^']lib/tap.js['][)],require('tap'),g" {} \;
+else
+override_dh_installexamples:
+endif
+
+debian/copyright: debian/components/copyright $(COPYRIGHT_COMPONENTS_FILES) debian/components/copyright.license
+	cat debian/components/copyright $(COPYRIGHT_COMPONENTS_FILES) debian/components/copyright.license > debian/copyright
+
+debian/install: debian/components/install $(INSTALL_COMPONENTS_FILES)
+	cp -f debian/components/install debian/install
+	set -e; \
+	for c in $(COMPONENTS); do \
+			sed -e "/^./ s,^,$$c/,g" < debian/components/$$c/install >> debian/install; \
+	done;
+
+maint_rule: debian/copyright debian/install
+	$(info $(COPYRIGHT_COMPONENTS_FILES))
+	$(info run maint rules)
