@@ -1,7 +1,7 @@
 ---
 Archive: GitHub
-Bug-Database: https://github.com/isaacs/node-tap/issues
-Bug-Submit: https://github.com/isaacs/node-tap/issues/new
+Bug-Database: https://github.com/tapjs/node-tap/issues
+Bug-Submit: https://github.com/tapjs/node-tap/issues/new
 Changelog: https://github.com/isaacs/node-tap/tags
 Repository: https://github.com/isaacs/node-tap.git
-Repository-Browse: https://github.com/isaacs/node-tap
+Repository-Browse: https://github.com/tapjs/node-tap

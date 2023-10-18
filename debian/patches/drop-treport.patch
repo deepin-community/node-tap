@@ -1,0 +1,101 @@
+Description: drop treport
+ treport requires "ink" which isn't packaged
+Author: Yadd <yadd@debian.org>
+Forwarded: not-needed
+Last-Update: 2022-03-07
+
+--- a/bin/jack.js
++++ b/bin/jack.js
+@@ -4,7 +4,7 @@
+ 
+ const reporters = [...new Set([
+   ...(require('tap-mocha-reporter').types),
+-  ...(require('treport/types')),
++  //...(require('treport/types')),
+ ])]
+ // nyc bundles its deps, pull reporters out of it
+ const nycReporters = [
+--- a/bin/run.js
++++ b/bin/run.js
+@@ -185,7 +185,6 @@
+       'tap-parser': tapParser,
+       nyc: require('nyc/package.json').version,
+       'tap-yaml': tapYaml,
+-      treport: require('treport/package.json').version,
+       tcompare
+     }))
+   }
+@@ -442,14 +441,14 @@
+ // spot where "this" is defined, so we bind this function to an object
+ // in this completely weird way, or else import-jsx doesn't work.
+ const makeReporter = exports.makeReporter = function (tap, options) {
+-  const treportTypes = require('treport/types')
++  //const treportTypes = require('treport/types')
+   const tapMochaReporter = require('tap-mocha-reporter')
+   // if it's a treport type, use that
+   const reporter = options.reporter
+   if (reporter === 'tap')
+     tap.pipe(process.stdout)
+-  else if (treportTypes.includes(reporter))
+-    require('treport')(tap, reporter)
++  //else if (treportTypes.includes(reporter))
++    //require('treport')(tap, reporter)
+   else if (tapMochaReporter.types.includes(reporter))
+     tap.pipe(new tapMochaReporter(options.reporter))
+   else {
+--- a/tap-snapshots/test/run/basic.js.test.cjs
++++ b/tap-snapshots/test/run/basic.js.test.cjs
+@@ -16,7 +16,6 @@
+ tap-parser: {version}
+ nyc: {version}
+ tap-yaml: {version}
+-treport: {version}
+ tcompare: {version}
+ 
+ 
+--- a/tap-snapshots/test/run/reporters.js.test.cjs
++++ b/tap-snapshots/test/run/reporters.js.test.cjs
+@@ -5,9 +5,6 @@
+  * Make sure to inspect the output below.  Do not ignore changes!
+  */
+ 'use strict'
+-exports[`test/run/reporters.js TAP builtin reporter > stdout 1`] = `
+-treport output
+-`
+ 
+ exports[`test/run/reporters.js TAP cli reporter > stdout 1`] = `
+ TAP version 13
+@@ -18,10 +15,6 @@
+ 
+ `
+ 
+-exports[`test/run/reporters.js TAP react component > stdout 1`] = `
+-treport output
+-`
+-
+ exports[`test/run/reporters.js TAP stream reporter > stdout 1`] = `
+ spec output
+ `
+--- a/test/run/reporters.js
++++ b/test/run/reporters.js
+@@ -14,10 +14,6 @@
+ })
+ `)
+ 
+-const reactReporter = tmpfile(t, 'reporter.js', `
+-module.exports = class ReactyReporter extends require('treport').Base {}
+-`)
+-
+ const check = t => (er, o, e) => {
+   t.error(er)
+   o = clean(o)
+@@ -49,9 +45,6 @@
+     }
+   }, check(t)))
+ 
+-t.test('react component', t =>
+-  run([ok, '-R', './' + reactReporter], opt, check(t)))
+-
+ t.test('failures', t => {
+   const nonfunc = tmpfile(t, 'nonfunc.js', `module.exports = "hello"`)
+   const func = tmpfile(t, 'func.js', `module.exports = function () {}`)

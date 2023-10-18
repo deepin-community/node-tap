@@ -1,8 +1,0 @@
-#!/bin/sh
-set -e
-node -e "require('tap');"
-for m in module-*; do
-    node_module=$( echo $m | sed s/^module-//g );
-    test "X$node_module" != "X" ;
-    node -e "require('$node_module');";
-done

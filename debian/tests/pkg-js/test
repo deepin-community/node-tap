@@ -1,0 +1,14 @@
+TAP=`pwd`/bin/run.js
+LIST=`pkgjs-utils root_components_list|grep -v module-libtap|grep -v module-jackspeak|grep -v module-findit|grep -v module-isaacs-import-jsx|grep -v types-`
+if test "$AUTOPKGTEST_TMP" != ""; then
+	TAP=tap
+	rm -rf module-caller* module-tcompare
+	(cd module-trivial-deferred && ln -s /usr/share/nodejs/trivial-deferred/dist)
+fi
+TAP="$TAP -J -R spec -t 30000"
+for i in $LIST; do
+	if test -e $i; then
+		(cd $i && TAP_SNAPSHOT=1 $TAP --no-coverage test*)
+	fi
+done
+CI=1 TRAVIS=1 $TAP --no-coverage `ls test/*.js|grep -v test/tap.js|grep -v test/watch.js`

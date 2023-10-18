@@ -1,63 +1,114 @@
 Source: node-tap
-Maintainer: Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>
-Uploaders: Jérémy Lal <kapouer@melix.org>,
-           Bastien Roucariès <rouca@debian.org>
 Section: javascript
 Priority: optional
-Build-Depends:
- debhelper-compat (= 12)
- , nodejs (>= 6)
+Maintainer: Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>
+Uploaders: Jérémy Lal <kapouer@melix.org>, Bastien Roucariès <rouca@debian.org>
+Build-Depends: debhelper-compat (= 13)
+ , dh-sequence-nodejs (>= 0.12.3~)
  , help2man <!nodoc>
- , node-clean-yaml-object <!nocheck> <!nodoc>
- , node-supports-color  <!nocheck> <!nodoc>
- , node-foreground-child <!nocheck> <!nodoc>
- , node-glob (>= 7) <!nocheck> <!nodoc>
- , node-isexe (>= 2.0) <!nocheck> <!nodoc>
- , node-js-yaml (>= 3.14.0) <!nocheck> <!nodoc>
- , node-mkdirp (>= 0.5.1) <!nocheck> <!nodoc>
- , node-rimraf (>= 2.6.2) <!nocheck> <!nodoc>
- , node-signal-exit <!nocheck> <!nodoc>
- , node-source-map-support (>= 0.5.6) <!nocheck> <!nodoc>
- , node-stack-utils <!nocheck> <!nodoc>
- , node-tap-mocha-reporter <!nocheck> <!nodoc>
- , node-tap-parser (>= 7.0.0) <!nocheck> <!nodoc>
- , node-tmatch (>= 4.0.0) <!nocheck> <!nodoc>
- , node-write-file-atomic <!nocheck> <!nodoc>
- , node-mkdirp <!nocheck> <!nodoc>
- , node-which (>= 1.1.1) <!nocheck> <!nodoc>
- , node-assert <!nocheck> <!nodoc>
- , node-coveralls <!nocheck> <!nodoc>
- , node-opener <!nocheck> <!nodoc>
- , pkg-js-tools (>= 0.9.20~)
-Standards-Version: 4.5.0
+ , node-ansi-escapes <!nocheck>
+ , node-assert <!nodoc>
+ , node-auto-bind <!nocheck>
+ , node-babel7 <!nocheck>
+ , node-chalk <!nocheck>
+ , node-chokidar <!nocheck>
+ , node-clean-yaml-object <!nodoc>
+ , node-cli-boxes <!nocheck>
+ , node-cli-cursor <!nocheck>
+ , node-cli-truncate <!nocheck>
+ , node-cliui <!nocheck>
+ , node-coveralls <!nodoc>
+ , node-diff
+ , node-esprima <!nocheck>
+ , node-find-cache-dir <!nocheck>
+ , node-foreground-child (>= 3) <!nocheck>
+ , node-foreground-child (>= 3) <!nodoc>
+ , node-glob <!nodoc>
+ , node-indent-string <!nocheck>
+ , node-isexe <!nodoc>
+ , node-istanbul <!nocheck>
+ , node-jest-debbundle <!nocheck>
+ , node-lodash <!nocheck>
+ , node-make-dir <!nocheck>
+ , node-minipass <!nocheck>
+ , node-mkdirp <!nodoc>
+ , node-ms <!nocheck>
+ , node-opener <!nodoc>
+ , node-punycode <!nocheck>
+ , node-read-pkg <!nocheck>
+ , node-resolve-from <!nocheck>
+ , node-rimraf <!nodoc>
+ , node-shell-quote <!nocheck>
+ , node-signal-exit (>= 4) <!nodoc>
+ , node-source-map-support <!nodoc>
+ , node-stack-utils <!nodoc>
+ , node-string-width <!nocheck>
+ , node-strip-ansi <!nocheck>
+ , node-tap-mocha-reporter <!nodoc>
+ , node-tap-parser (>= 10) <!nodoc>
+ , node-tape <!nocheck>
+ , node-typescript
+ , node-which <!nodoc>
+ , node-widest-line <!nocheck>
+ , node-wrap-ansi <!nocheck>
+ , node-ws <!nocheck>
+ , rollup
+ , terser
+ , ts-node <!nocheck>
+Standards-Version: 4.6.2
 Vcs-Browser: https://salsa.debian.org/js-team/node-tap
 Vcs-Git: https://salsa.debian.org/js-team/node-tap.git
 Homepage: https://github.com/tapjs/node-tap
+Testsuite: autopkgtest-pkg-nodejs
 Rules-Requires-Root: no
 
 Package: node-tap
 Architecture: all
-Depends:
- ${misc:Depends}
- , nodejs (>= 6)
- , node-clean-yaml-object
- , node-supports-color
- , node-foreground-child
- , node-glob (>= 7)
- , node-isexe (>= 2.0)
- , node-js-yaml (>= 3.11.0)
- , node-mkdirp (>= 0.5.1)
- , node-rimraf (>= 2.6.2)
- , node-signal-exit
- , node-source-map-support (>= 0.5.6)
- , node-stack-utils
- , node-tap-mocha-reporter
- , node-tap-parser (>= 7.0.0)
- , node-tmatch (>= 4.0.0)
- , node-write-file-atomic
-Recommends:
- node-coveralls
+Depends: ${misc:Depends}
+ , node-ansi-escapes
+ , node-auto-bind
+ , node-babel7
+ , node-base
+ , node-chalk
+ , node-chokidar
+ , node-cli-boxes
+ , node-cli-cursor
+ , node-cli-truncate
+ , node-cliui
+ , node-coveralls
+ , node-diff
+ , node-esprima
+ , node-find-cache-dir
+ , node-foreground-child (>= 3)
+ , node-glob
+ , node-indent-string
+ , node-isexe
+ , node-istanbul
+ , node-jest-debbundle
+ , node-lodash
+ , node-make-dir
+ , node-minipass
+ , node-mkdirp
+ , node-ms
  , node-opener
+ , node-punycode
+ , node-read-pkg
+ , node-resolve-from
+ , node-rimraf
+ , node-shell-quote
+ , node-signal-exit (>= 4)
+ , node-slice-ansi
+ , node-source-map-support
+ , node-stack-utils
+ , node-string-width
+ , node-strip-ansi
+ , node-tap-mocha-reporter
+ , node-tap-parser (>= 10)
+ , node-which
+ , node-widest-line
+ , node-wrap-ansi
+ , node-ws
+ , nodejs:any
 Suggests: node-nyc (>= 11.8.0)
 Provides: ${nodejs:Provides}
 Description: Test-Anything-Protocol module for Node.js

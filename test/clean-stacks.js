@@ -2,7 +2,7 @@
 
 // Just a utility to clean up the snapshots for output tests
 
-const yaml = require('js-yaml')
+const yaml = require('tap-yaml')
 const internals = Object.keys(process.binding('natives'))
 
 module.exports = out => out
@@ -10,7 +10,7 @@ module.exports = out => out
   .replace(/\n(   *)---\n((\1.*\n)*)\1\.\.\.\n/g, ($0, $1, $2) => {
     let o
     try {
-      o = yaml.safeLoad($2)
+      o = yaml.parse($2)
     } catch (er) {
       return $0
     }
@@ -21,9 +21,15 @@ module.exports = out => out
       return s
     }, {})
     return '\n' + $1 + '---\n' + $1 +
-      yaml.safeDump(out).trim().split('\n').join('\n' + $1)
+      yaml.stringify(out).trim().split('\n').join('\n' + $1)
       + '\n' + $1 + '...\n'
   })
+
+  // https://github.com/nodejs/node/issues/25806
+  .replace(/  handles:\n    - type: Timer\n/g, '')
+
+  // this key has changed names
+  .replace(/FSReqWrap/g, 'FSReqCallback')
 
   // remove time details
   .replace(/ # time=[0-9\.]+m?s( \{.*)?\n/g, ' # {time}$1\n')
@@ -47,7 +53,8 @@ module.exports = out => out
   .replace(/\n( +)method: .*(\n\1  .*)*\n/g, '\n')
   .replace(/\n( +)type: .*\n/g, '\n')
   .replace(/\n( +)file: (.*)\n/g, ($0, $1, $2) =>
-    internals.indexOf($2.replace(/\.js$/, '')) === -1 ? $0
+    internals.indexOf($2.replace(/\.js$/, '')) === -1 &&
+    !/\bnode:\b/.test($2) ? $0
       : '\n' + $1 + 'file: #INTERNAL#\n'
   )
 
@@ -58,6 +65,14 @@ module.exports = out => out
   .split(process.cwd()).join('{CWD}')
   .split(require('path').resolve(__dirname, '..')).join('{TAPDIR}')
   .split(process.execPath).join('{NODE}')
+
+  .split(process.env.HOME).join('{HOME}')
+
+  // the arrows in source printing bits, make that consistent
+  .replace(/^(\s*)-+\^$/mg, '$1--^')
+
+  // remove presumptuous node version output on all crashes
+  .replace(/\nNode.js v[0-9\.]+\n/g, '')
 
 // nothing to see here
 if (module === require.main)

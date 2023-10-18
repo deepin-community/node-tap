@@ -1,0 +1,2 @@
+mjs2cjs index.js
+perl -i -pe 's/node://' index.cjs

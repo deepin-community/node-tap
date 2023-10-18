@@ -1,0 +1,17 @@
+Description: export package.json
+Author: Yadd <yadd@debian.org>
+Forwarded: not-needed
+Last-Update: 2022-11-24
+
+--- a/module-tcompare/package.json
++++ b/module-tcompare/package.json
+@@ -18,7 +18,8 @@
+     "./plugin-base": {
+       "import": "./dist/mjs/plugin-base.js",
+       "require": "./dist/cjs/plugin-base.js"
+-    }
++    },
++    "./package.json": "./package.json"
+   },
+   "files": [
+     "dist"
