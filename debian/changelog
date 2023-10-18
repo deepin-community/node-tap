@@ -1,8 +1,121 @@
+node-tap (16.3.7+ds1+~cs50.9.19-2) unstable; urgency=medium
+
+  * Team upload
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository-Browse
+  * Add fix for node-signal-exit >= 4 and node-foreground-child >= 3
+
+ -- Yadd <yadd@debian.org>  Fri, 18 Aug 2023 07:12:05 +0400
+
+node-tap (16.3.7+ds1+~cs50.9.19-1) unstable; urgency=medium
+
+  * Team upload
+  * Declare compliance with policy 4.6.2
+  * New upstream version 16.3.7+ds1+~cs50.9.19, updates:
+    - tap 16.3.7
+    - libtap 1.4.1
+    - trivial-deferred 1.1.2
+  * Update build and test
+
+ -- Yadd <yadd@debian.org>  Sun, 16 Jul 2023 11:52:14 +0400
+
+node-tap (16.3.2+ds1+~cs50.8.16-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 16.3.2+ds1+~cs50.8.16
+  * Build tcompare with typescript
+  * Fix commonjs exports
+  * Add patch to export tcompare/package.json
+  * Fix test
+  * Test-Depends: ts-node
+
+ -- Yadd <yadd@debian.org>  Thu, 24 Nov 2022 18:03:31 +0100
+
+node-tap (16.3.1+ds1+~cs48.8.25-1) unstable; urgency=medium
+
+  * Team upload
+  * update findit url
+  * New upstream version 16.3.1+ds1+~cs48.8.25
+  * Update copyright
+
+ -- Yadd <yadd@debian.org>  Mon, 14 Nov 2022 06:10:34 +0100
+
+node-tap (16.3.0+ds1+~cs48.8.24-1) unstable; urgency=medium
+
+  * Team upload
+  * Declare compliance with policy 4.6.1
+  * New upstream version 16.3.0+ds1+~cs48.8.24
+
+ -- Yadd <yadd@debian.org>  Tue, 26 Jul 2022 08:29:03 +0200
+
+node-tap (16.1.0+ds+~cs48.8.24-2) unstable; urgency=medium
+
+  * Team upload
+  * Back to unstable
+
+ -- Yadd <yadd@debian.org>  Tue, 10 May 2022 06:37:14 +0200
+
+node-tap (16.1.0+ds+~cs48.8.24-1) experimental; urgency=medium
+
+  * Team upload
+  * Embed typescript declarations
+  * New upstream version 16.1.0+ds+~cs48.8.24
+  * Unfuzz patches
+
+ -- Yadd <yadd@debian.org>  Mon, 02 May 2022 06:06:31 +0200
+
+node-tap (15.2.3+ds+~cs33.7.17-3) unstable; urgency=medium
+
+  * Team upload
+  * Add missing dependency to node-base
+  * Make build reproducible
+
+ -- Yadd <yadd@debian.org>  Mon, 04 Apr 2022 12:27:03 +0200
+
+node-tap (15.2.3+ds+~cs33.7.17-2) unstable; urgency=medium
+
+  * Team upload
+  * Back to unstable
+
+ -- Yadd <yadd@debian.org>  Thu, 10 Mar 2022 06:32:17 +0100
+
+node-tap (15.2.3+ds+~cs33.7.17-1) experimental; urgency=medium
+
+  * Team upload
+  * Update nodejs dependency to nodejs:any
+  * Use dh-sequence-nodejs auto test & install
+  * Use uscan components instead of old dh_component
+  * New upstream version 15.2.3+ds+~cs33.7.17 (Closes: #1004503)
+  * Update patches
+  * Update dependencies
+  * Update lintian overrides
+  * Update copyright
+  * Build commonjs files for module-caller*
+
+ -- Yadd <yadd@debian.org>  Tue, 08 Mar 2022 12:02:26 +0100
+
+node-tap (12.0.1+ds-4) unstable; urgency=medium
+
+  * Team upload
+
+  [ Debian Janitor ]
+  * Remove constraints unnecessary since buster
+
+  [ Yadd ]
+  * Fix BTS number
+  * Bump debhelper compatibility level to 13
+  * Use dh-sequence-nodejs
+  * Fix GitHub tags regex
+  * Fix filenamemangle
+  * Update standards version to 4.6.0, no changes needed.
+  * Fix test for js-yaml ≥ 4
+
+ -- Yadd <yadd@debian.org>  Wed, 24 Nov 2021 14:35:28 +0100
+
 node-tap (12.0.1+ds-3) unstable; urgency=medium
 
   * Team upload
   * Declare compliance with policy 4.5.0
-  * Fix test for js-yaml 3.14.0 (Closes: #964880)
+  * Fix test for js-yaml 3.14.0 (Closes: #963437)
 
  -- Xavier Guimard <yadd@debian.org>  Tue, 11 Aug 2020 11:43:47 +0200
 

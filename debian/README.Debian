@@ -1,5 +1,2 @@
-This package Depends only on the minimal set of modules needed to
-actually run tests.
-All other modules listed in Suggests are maintained separately and maybe
-not available as debian packages.
-
+This package does not include treport because some dependencies aren't
+available. If test fails, change output format

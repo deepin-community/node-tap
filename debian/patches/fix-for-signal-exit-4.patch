@@ -1,0 +1,47 @@
+Description: fix for signal-exit >= 4
+Author: Yadd <yadd@debian.org>
+Forwarded: not-needed
+Last-Update: 2023-08-17
+
+--- a/bin/run.js
++++ b/bin/run.js
+@@ -6,7 +6,7 @@
+   process.env.FORCE_COLOR = '0'
+ }
+ 
+-const signalExit = require('signal-exit')
++const { onExit } = require('signal-exit')
+ const opener = require('opener')
+ const node = process.execPath
+ const fs = require('fs')
+@@ -829,7 +829,7 @@
+ 
+   if (options.after) {
+     /* istanbul ignore next - run after istanbul's report */
+-    signalExit(() => {
++    onExit(() => {
+       if (options.ts && tsNode && /\.tsx?$/.test(options.after)) {
+         beforeAfter(env, ['-r', tsNode, ...options['node-arg'], options.after])
+       } else {
+--- a/lib/watch.js
++++ b/lib/watch.js
+@@ -4,7 +4,7 @@
+ const Minipass = require('minipass')
+ const bin = require.resolve('../bin/run.js')
+ const {spawn} = require('child_process')
+-const onExit = require('signal-exit')
++const { onExit } = require('signal-exit')
+ const fs = require('fs')
+ const {writeFileSync, readFileSync} = fs
+ const {stringify} = require('tap-yaml')
+--- a/module-libtap/lib/tap.js
++++ b/module-libtap/lib/tap.js
+@@ -2,7 +2,7 @@
+ const process = require('./process.js')
+ const fakeProcess = require('./fake-process.js')
+ const Domain = require('async-hook-domain')
+-const onExit = require('signal-exit')
++const { onExit } = require('signal-exit')
+ const Test = require('./test.js')
+ const Stdin = require('./stdin.js')
+ const Spawn = require('./spawn.js')

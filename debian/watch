@@ -1,6 +1,104 @@
 version=4
 opts=\
-repacksuffix=+ds,\
+repacksuffix=+ds1,\
 dversionmangle=s/\+(debian|dfsg|ds|deb)(\.\d+)?$//,\
-filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-tap-$1.tar.gz/ \
- https://github.com/tapjs/node-tap/tags .*/archive/v?([\d\.]+).tar.gz
+filenamemangle=s/.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-tap-$1/ \
+ https://github.com/tapjs/node-tap/tags .*/archive/.*/v?([\d\.]+).tar.gz group
+
+opts=\
+component=module-async-hook-domain,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-async-hook-domain-$1/ \
+ https://github.com/tapjs/async-hook-domain/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=module-bind-obj-methods,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-bind-obj-methods-$1/ \
+ https://github.com/isaacs/bind-obj-methods/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=module-caller-path,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-caller-path-$1/ \
+ https://github.com/sindresorhus/caller-path/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=module-caller-callsite,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-caller-callsite-$1/ \
+ https://github.com/sindresorhus/caller-callsite/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=module-findit,\
+searchmode=plain,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-node-findit-$1/ \
+ https://registry.npmjs.org/findit https://registry.npmjs.org/findit/-/findit-([\d\.]+)@ARCHIVE_EXT@ checksum
+
+# It is not recommended use npmregistry. Please investigate more.
+# Take a look at https://wiki.debian.org/debian/watch/
+opts="searchmode=plain,component=module-fs-exists-cached,ctype=nodejs,pgpmode=none,filenamemangle=s/^.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-fs-exists-cached-$1/" \
+ https://registry.npmjs.org/fs-exists-cached https://registry.npmjs.org/fs-exists-cached/-/fs-exists-cached-([\d\.]+)@ARCHIVE_EXT@ checksum
+
+opts=\
+component=module-function-loop,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-function-loop-$1/ \
+ https://github.com/isaacs/function-loop/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+# It is not recommended use npmregistry. Please investigate more.
+# Take a look at https://wiki.debian.org/debian/watch/
+opts="searchmode=plain,component=module-isaacs-import-jsx,ctype=nodejs,pgpmode=none,filenamemangle=s/^.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-isaacs-import-jsx-$1/" \
+ https://registry.npmjs.org/@isaacs/import-jsx https://registry.npmjs.org/@isaacs/import-jsx/-/import-jsx-([\d\.]+)@ARCHIVE_EXT@ checksum
+
+opts=\
+component=module-jackspeak,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-jackspeak-$1/ \
+ https://github.com/isaacs/jackspeak/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=module-libtap,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-libtap-$1/ \
+ https://github.com/tapjs/libtap/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+# It is not recommended use npmregistry. Please investigate more.
+# Take a look at https://wiki.debian.org/debian/watch/
+opts="searchmode=plain,component=module-own-or,ctype=nodejs,pgpmode=none,filenamemangle=s/^.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-own-or-$1/" \
+ https://registry.npmjs.org/own-or https://registry.npmjs.org/own-or/-/own-or-([\d\.]+)@ARCHIVE_EXT@ checksum
+
+opts=\
+component=module-own-or-env,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-own-or-env-$1/ \
+ https://github.com/isaacs/own-or-env/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=module-tcompare,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-tcompare-$1/ \
+ https://github.com/tapjs/tcompare/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=module-trivial-deferred,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-trivial-deferred-$1/ \
+ https://github.com/isaacs/trivial-deferred/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+# It is not recommended use npmregistry. Please investigate more.
+# Take a look at https://wiki.debian.org/debian/watch/
+opts="searchmode=plain,component=types-tap,ctype=nodejs,pgpmode=none,filenamemangle=s/^.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-types-tap-$1/" \
+ https://registry.npmjs.org/@types/tap https://registry.npmjs.org/@types/tap/-/tap-([\d\.]+)@ARCHIVE_EXT@ checksum

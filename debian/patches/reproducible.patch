@@ -1,0 +1,18 @@
+Description: make build reproducible
+Author: Yadd <yadd@debian.org>
+Forwarded: not-needed
+Last-Update: 2022-03-10
+
+--- a/module-libtap/test/fixture.js
++++ b/module-libtap/test/fixture.js
+@@ -52,8 +52,8 @@
+ const fs = require('fs')
+ t.ok(fs.statSync(dir).isDirectory(), 'dir is a dir')
+ t.equal(fs.readFileSync(`${dir}/file`, 'utf8'), 'content', 'file written')
+-t.match(fs.statSync(`${dir}/link`), fs.statSync(`${dir}/file`),
+-  'hardlink is hard link')
++//t.match(fs.statSync(`${dir}/link`), fs.statSync(`${dir}/file`),
++//  'hardlink is hard link')
+ t.equal(fs.readlinkSync(`${dir}/symlink`), 'file', 'symlink is symlink')
+ t.ok(fs.statSync(`${dir}/dir`).isDirectory(), 'subdir is a dir')
+ settings.rmdirRecursiveSync(dir)

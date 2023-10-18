@@ -1,2 +1,17 @@
-# False positive
-source: pkg-js-tools-test-is-missing debian/tests/pkg-js/test
+# False positive: test data
+very-long-line-length-in-source-file *module-tcompare/tap-snapshots/test/format.js.test.cjs*
+# Images
+very-long-line-length-in-source-file *docs/*.gif*
+# False positive, matches module-*/*
+add-component-copyright module-async-hook-domain [debian/copyright]
+add-component-copyright module-bind-obj-methods [debian/copyright]
+add-component-copyright module-fs-exists-cached [debian/copyright]
+add-component-copyright module-function-loop [debian/copyright]
+add-component-copyright module-jackspeak [debian/copyright]
+add-component-copyright module-libtap [debian/copyright]
+add-component-copyright module-own-or [debian/copyright]
+add-component-copyright module-own-or-env [debian/copyright]
+add-component-copyright module-tcompare [debian/copyright]
+add-component-copyright module-trivial-deferred [debian/copyright]
+# Generic types-* path
+add-component-copyright types-*

@@ -1,2 +1,10 @@
+.nyc_output/
+module-async-hook-domain/tap-snapshots/test/run.js-test-run.js.test.cjs
+module-async-hook-domain/tap-snapshots/test/run.js-test-sms.js.test.cjs
+module-async-hook-domain/tap-snapshots/test/run.js.test.cjs
+module-caller*/index.cjs
+module-tcompare/dist/
+*/.nyc_output/
 debian/tap.1
-COMPONENTS
+node_modules/
+module-trivial-deferred/dist/

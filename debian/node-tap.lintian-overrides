@@ -1,3 +1,2 @@
 # False positive
-embedded-javascript-library usr/share/nodejs/tap/lib/mocha.js please use libjs-mocha
-script-not-executable usr/share/nodejs/tap/bin/mochatap.js
+embedded-javascript-library please use libjs-mocha *usr/share/nodejs/tap/lib/mocha.js*
