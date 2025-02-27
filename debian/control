@@ -16,7 +16,7 @@ Build-Depends: debhelper-compat (= 13)
  , node-cli-boxes <!nocheck>
  , node-cli-cursor <!nocheck>
  , node-cli-truncate <!nocheck>
- , node-cliui <!nocheck>
+ , node-cliui (>= 7.0.4+repack+1+~cs1.4.2-1~)
  , node-coveralls <!nodoc>
  , node-diff
  , node-esprima <!nocheck>
@@ -30,7 +30,7 @@ Build-Depends: debhelper-compat (= 13)
  , node-jest-debbundle <!nocheck>
  , node-lodash <!nocheck>
  , node-make-dir <!nocheck>
- , node-minipass <!nocheck>
+ , node-minipass (>> 3.3.6+~cs9.4.19-3~) <!nocheck>
  , node-mkdirp <!nodoc>
  , node-ms <!nocheck>
  , node-opener <!nodoc>
@@ -45,7 +45,7 @@ Build-Depends: debhelper-compat (= 13)
  , node-string-width <!nocheck>
  , node-strip-ansi <!nocheck>
  , node-tap-mocha-reporter <!nodoc>
- , node-tap-parser (>= 10) <!nodoc>
+ , node-tap-parser (>> 11.0.2+~cs2.1.4-2~)
  , node-tape <!nocheck>
  , node-typescript
  , node-which <!nodoc>
@@ -74,7 +74,7 @@ Depends: ${misc:Depends}
  , node-cli-boxes
  , node-cli-cursor
  , node-cli-truncate
- , node-cliui
+ , node-cliui (>= 7.0.4+repack+1+~cs1.4.2-1~)
  , node-coveralls
  , node-diff
  , node-esprima
@@ -87,7 +87,7 @@ Depends: ${misc:Depends}
  , node-jest-debbundle
  , node-lodash
  , node-make-dir
- , node-minipass
+ , node-minipass (>> 3.3.6+~cs9.4.19-3~)
  , node-mkdirp
  , node-ms
  , node-opener
@@ -103,7 +103,7 @@ Depends: ${misc:Depends}
  , node-string-width
  , node-strip-ansi
  , node-tap-mocha-reporter
- , node-tap-parser (>= 10)
+ , node-tap-parser (>> 11.0.2+~cs2.1.4-2~)
  , node-which
  , node-widest-line
  , node-wrap-ansi

@@ -1,0 +1,133 @@
+From: =?utf-8?q?Bastien_Roucari=C3=A8s?= <rouca@debian.org>
+Date: Thu, 8 Aug 2024 21:56:57 +0000
+Subject: Port to newer minipass
+
+No default
+
+Forwarded: not-needed
+---
+ lib/repl.js                      | 3 ++-
+ lib/watch.js                     | 2 +-
+ module-libtap/lib/base.js        | 2 +-
+ module-libtap/test/base.js       | 2 +-
+ module-libtap/test/stdin.js      | 2 +-
+ module-libtap/test/tap/resume.js | 2 +-
+ module-libtap/test/test.js       | 2 +-
+ module-tcompare/test/format.ts   | 2 +-
+ test/repl.js                     | 2 +-
+ 9 files changed, 10 insertions(+), 9 deletions(-)
+
+diff --git a/lib/repl.js b/lib/repl.js
+index f804b31..7087145 100644
+--- a/lib/repl.js
++++ b/lib/repl.js
+@@ -11,7 +11,8 @@ const path = require('path')
+ const fs = require('fs')
+ /* istanbul ignore next */
+ const noop = () => {}
+-const {isStream} = require('minipass')
++const {Minipass} = require('minipass')
++const isStream = Minipass.isStream
+ 
+ // XXX useGlobal = true, because it doesn't matter, so save the cycles
+ class Repl {
+diff --git a/lib/watch.js b/lib/watch.js
+index 284f778..a73988c 100644
+--- a/lib/watch.js
++++ b/lib/watch.js
+@@ -1,7 +1,7 @@
+ const proc = typeof process === 'object' && process ? process : null
+ 
+ const chokidar = require('chokidar')
+-const Minipass = require('minipass')
++const { Minipass } = require('minipass')
+ const bin = require.resolve('../bin/run.js')
+ const {spawn} = require('child_process')
+ const { onExit } = require('signal-exit')
+diff --git a/module-libtap/lib/base.js b/module-libtap/lib/base.js
+index dc82dad..55f1b8b 100644
+--- a/module-libtap/lib/base.js
++++ b/module-libtap/lib/base.js
+@@ -4,7 +4,7 @@ const process = require('./process.js')
+ const assert = require('assert')
+ const util = require('util')
+ const {AsyncResource} = require('async_hooks')
+-const MiniPass = require('minipass')
++const {Minipass: MiniPass} = require('minipass')
+ const Domain = require('async-hook-domain')
+ const { Parser } = require('tap-parser')
+ const ownOr = require('own-or')
+diff --git a/module-libtap/test/base.js b/module-libtap/test/base.js
+index 0fefab8..780cca3 100644
+--- a/module-libtap/test/base.js
++++ b/module-libtap/test/base.js
+@@ -282,7 +282,7 @@ t.test('oncomplete', t => {
+ })
+ 
+ t.test('pipes backing up', t => {
+-  const MiniPass = require('minipass')
++  const {Minipass: MiniPass} = require('minipass')
+   const mp = new MiniPass({ encoding: 'utf8' })
+   const b = new Base({})
+   b.pipe(mp)
+diff --git a/module-libtap/test/stdin.js b/module-libtap/test/stdin.js
+index 0adc5fd..c6c633f 100644
+--- a/module-libtap/test/stdin.js
++++ b/module-libtap/test/stdin.js
+@@ -1,6 +1,6 @@
+ const t = require('../')
+ const Stdin = require('../lib/stdin.js')
+-const MP = require('minipass')
++const {Minipass: MP} = require('minipass')
+ 
+ process.env.TAP_BAIL = ''
+ process.env.TAP_BUFFER = ''
+diff --git a/module-libtap/test/tap/resume.js b/module-libtap/test/tap/resume.js
+index 986d3ca..836ae30 100644
+--- a/module-libtap/test/tap/resume.js
++++ b/module-libtap/test/tap/resume.js
+@@ -1,4 +1,4 @@
+-const MiniPass = require('minipass')
++const {Minipass: MiniPass} = require('minipass')
+ const mp = new MiniPass()
+ mp.pipe(process.stdout)
+ 
+diff --git a/module-libtap/test/test.js b/module-libtap/test/test.js
+index 819195e..f4121b7 100644
+--- a/module-libtap/test/test.js
++++ b/module-libtap/test/test.js
+@@ -6,7 +6,7 @@ const Test = t.Test
+ const util = require('util')
+ const assert = require('assert')
+ const EE = require('events').EventEmitter
+-const MiniPass = require('minipass')
++const {Minipass: MiniPass} = require('minipass')
+ const settings = require('../settings.js')
+ 
+ if (settings.rimrafNeeded) {
+diff --git a/module-tcompare/test/format.ts b/module-tcompare/test/format.ts
+index f212aca..565f936 100644
+--- a/module-tcompare/test/format.ts
++++ b/module-tcompare/test/format.ts
+@@ -234,7 +234,7 @@ t.test('objectAsArray is null for non-arrays', t => {
+ })
+ 
+ t.test('streams are not arrays', t => {
+-  const MP = require('minipass')
++  const {Minipass: MP } = require('minipass')
+   const readable = new MP().end('hello')
+   const writable = new MP()
+   writable.pipe = null
+diff --git a/test/repl.js b/test/repl.js
+index 70e2fa2..4a50170 100644
+--- a/test/repl.js
++++ b/test/repl.js
+@@ -40,7 +40,7 @@ function FakeWatch () {
+   return fakeWatch
+ }
+ 
+-const Minipass = require('minipass')
++const { Minipass } = require('minipass')
+ 
+ require('../lib/watch.js').Watch = FakeWatch
+ 

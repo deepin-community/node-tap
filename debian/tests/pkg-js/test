@@ -3,7 +3,7 @@ LIST=`pkgjs-utils root_components_list|grep -v module-libtap|grep -v module-jack
 if test "$AUTOPKGTEST_TMP" != ""; then
 	TAP=tap
 	rm -rf module-caller* module-tcompare
-	(cd module-trivial-deferred && ln -s /usr/share/nodejs/trivial-deferred/dist)
+	(cd module-trivial-deferred && rm -rf dist && ln -s /usr/share/nodejs/trivial-deferred/dist)
 fi
 TAP="$TAP -J -R spec -t 30000"
 for i in $LIST; do
