@@ -2,9 +2,9 @@ drop-treport.patch
 replace-ava-by-tape.patch
 export-commonjs-files.patch
 reproducible.patch
-#x1
-#x2
-#x11
 export-package.json
 fix-for-signal-exit-4.patch
 fix-for-foreground-3.patch
+support-tsnode-by-default.patch
+0009-Ease-node-tap-parser-transition.patch
+0010-Port-to-newer-minipass.patch

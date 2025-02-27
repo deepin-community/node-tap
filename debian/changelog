@@ -1,3 +1,52 @@
+node-tap (16.3.7+ds3+~cs49.5.20-1) unstable; urgency=medium
+
+  * Sourcefull upload
+  * Update types
+
+ -- Bastien Roucariès <rouca@debian.org>  Mon, 19 Aug 2024 09:15:22 +0000
+
+node-tap (16.3.7+ds2+~cs50.9.19-1) unstable; urgency=medium
+
+  * Move jackspeak to node-cliui
+
+ -- Bastien Roucariès <rouca@debian.org>  Sun, 18 Aug 2024 19:37:35 +0000
+
+node-tap (16.3.7+ds1+~cs50.9.19-7) unstable; urgency=medium
+
+  * Ease transition for newer minipass
+
+ -- Bastien Roucariès <rouca@debian.org>  Fri, 09 Aug 2024 19:14:54 +0000
+
+node-tap (16.3.7+ds1+~cs50.9.19-6) unstable; urgency=medium
+
+  * Port to newer minipass
+
+ -- Bastien Roucariès <rouca@debian.org>  Thu, 08 Aug 2024 21:58:55 +0000
+
+node-tap (16.3.7+ds1+~cs50.9.19-5) unstable; urgency=medium
+
+  * Team upload
+  * Ease transition for node-tap-parser
+
+ -- Bastien Roucariès <rouca@debian.org>  Tue, 30 Jul 2024 23:02:32 +0000
+
+node-tap (16.3.7+ds1+~cs50.9.19-4) unstable; urgency=medium
+
+  * patch: improve .ts support
+  * Remove --ts for debian/tests, no longer needed
+
+ -- Jérémy Lal <kapouer@melix.org>  Tue, 12 Dec 2023 10:48:20 +0100
+
+node-tap (16.3.7+ds1+~cs50.9.19-3) unstable; urgency=medium
+
+  [ Yadd ]
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository-Browse.
+
+  [ Jérémy Lal ]
+  * Pass --ts for all tests to pass properly
+
+ -- Jérémy Lal <kapouer@melix.org>  Tue, 05 Dec 2023 18:05:21 +0100
+
 node-tap (16.3.7+ds1+~cs50.9.19-2) unstable; urgency=medium
 
   * Team upload

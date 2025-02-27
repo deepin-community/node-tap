@@ -1,0 +1,38 @@
+From: =?utf-8?q?Bastien_Roucari=C3=A8s?= <rouca@debian.org>
+Date: Tue, 30 Jul 2024 22:57:55 +0000
+Subject: Ease node-tap-parser transition
+
+Do not use default export
+
+Forwarded: not-needed
+---
+ module-libtap/lib/base.js   | 2 +-
+ module-libtap/test/spawn.js | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/module-libtap/lib/base.js b/module-libtap/lib/base.js
+index 3023d0d..dc82dad 100644
+--- a/module-libtap/lib/base.js
++++ b/module-libtap/lib/base.js
+@@ -6,7 +6,7 @@ const util = require('util')
+ const {AsyncResource} = require('async_hooks')
+ const MiniPass = require('minipass')
+ const Domain = require('async-hook-domain')
+-const Parser = require('tap-parser')
++const { Parser } = require('tap-parser')
+ const ownOr = require('own-or')
+ const ownOrEnv = require('own-or-env')
+ const extraFromError = require('./extra-from-error.js')
+diff --git a/module-libtap/test/spawn.js b/module-libtap/test/spawn.js
+index de29769..0445213 100644
+--- a/module-libtap/test/spawn.js
++++ b/module-libtap/test/spawn.js
+@@ -1,7 +1,7 @@
+ const Spawn = require('../lib/spawn.js')
+ const t = require('../')
+ const Test = t.Test
+-const Parser = require('tap-parser')
++const { Parser } = require('tap-parser')
+ const node = process.execPath
+ const file = __filename
+ 

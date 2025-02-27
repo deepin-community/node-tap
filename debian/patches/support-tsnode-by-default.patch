@@ -1,0 +1,32 @@
+Description: Support ts-node by default
+ However in node < 18.19, both
+ -r ts-node/register
+ --loader ts-node/esm
+ would compile twice.
+ Probably ts-node acting up, but much easier to avoid here.
+Author: Jérémy Lal <kapouer@melix.org>
+Last-Update: 2023-12-12
+Forwarded: no
+--- a/bin/run.js
++++ b/bin/run.js
+@@ -679,7 +679,7 @@
+       if (options.flow && flowNode)
+         options['node-arg'].push('-r', flowNode)
+ 
+-      if (options.ts && tsNode && /\.tsx?$/.test(file)) {
++      if (tsNode && /\.tsx?$/.test(file)) {
+         debug('typescript file', file)
+         const compilerOpts = JSON.parse(env.TS_NODE_COMPILER_OPTIONS || '{}')
+         if (options.jsx)
+@@ -695,6 +695,11 @@
+           file,
+           ...options['test-arg']
+         ]
++        if (args.includes('ts-node/esm')) {
++          args.unshift('--experimental-modules')
++          args.splice(args.indexOf('--loader'), 1);
++          args.splice(args.indexOf('ts-node/esm'), 1);
++        }
+         tap.spawn(node, args, opt, file)
+       } else if (options.jsx && /\.jsx$/.test(file)) {
+         debug('jsx file', file)
